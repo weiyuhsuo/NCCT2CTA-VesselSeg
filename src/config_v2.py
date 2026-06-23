@@ -11,8 +11,8 @@ NCCT_DIR = DATA_DIR / "NCCT"
 CTA_DIR = DATA_DIR / "CTA"
 SEG_DIR = DATA_DIR / "SEG"
 SRC_DIR = ROOT / "src"
-OUTPUT_DIR = ROOT / "outputs_r2"
-CHECKPOINT_DIR = OUTPUT_DIR / "checkpoints"
+OUTPUT_DIR = Path("/tmp/outputs_r2")
+CHECKPOINT_DIR = Path("/tmp/outputs_r2/checkpoints")
 PRED_DIR = OUTPUT_DIR / "predictions"
 FIG_DIR = OUTPUT_DIR / "figures"
 

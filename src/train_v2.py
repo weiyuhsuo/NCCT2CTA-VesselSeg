@@ -32,20 +32,26 @@ def load_split():
 
 
 def save_checkpoint(model, optimizer, scheduler, epoch, metrics, path, is_best=False):
+    import shutil, tempfile
+    # Write to /tmp first (NFS unreliable for large writes)
+    tmp = Path(tempfile.mktemp(suffix=".pth", dir="/tmp"))
     torch.save({
         'epoch': epoch,
         'model_state_dict': model.state_dict(),
         'optimizer_state_dict': optimizer.state_dict(),
         'scheduler_state_dict': scheduler.state_dict(),
         'metrics': metrics,
-    }, path)
+    }, tmp)
+    shutil.move(str(tmp), str(path))
     if is_best:
         best_path = path.parent / "best_model.pth"
+        best_tmp = Path(tempfile.mktemp(suffix=".pth", dir="/tmp"))
         torch.save({
             'epoch': epoch,
             'model_state_dict': model.state_dict(),
             'metrics': metrics,
-        }, best_path)
+        }, best_tmp)
+        shutil.move(str(best_tmp), str(best_path))
 
 
 def train_one_epoch(model, loader, optimizer, criterion, device):
