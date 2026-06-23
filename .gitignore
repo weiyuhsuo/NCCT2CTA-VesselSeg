@@ -20,3 +20,4 @@ __pycache__/
 .idea/
 data_100.zip
 unzip.log
+doc/
