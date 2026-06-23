@@ -6,7 +6,7 @@ from pathlib import Path
 # Paths
 ROOT = Path("/cpfs01/projects-SSD/cfff-71d5b2895244_SSD/hyb_24110860026/weiyushuo/NCCT2CTA-VesselSeg")
 DATA_DIR = ROOT / "data" / "data_100"
-PREPROC_DIR = Path("/tmp/preprocessed_512")
+PREPROC_DIR = ROOT / "data" / "preprocessed"
 NCCT_DIR = DATA_DIR / "NCCT"
 CTA_DIR = DATA_DIR / "CTA"
 SEG_DIR = DATA_DIR / "SEG"

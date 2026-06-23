@@ -108,7 +108,7 @@ def main():
 
     # Slice-level evaluation (on preprocessed 512×512 slices)
     print("\n=== Slice-level evaluation (512×512) ===")
-    test_ds = PreprocessedDataset(test_ids, PREPROC_DIR, augment=False)
+    test_ds = PreprocessedDataset(test_ids, PREPROC_DIR / "test", augment=False, target_size=IMAGE_SIZE)
     test_loader = DataLoader(test_ds, batch_size=BATCH_SIZE, shuffle=False,
                              num_workers=0, pin_memory=True)
     criterion = CombinedLoss(lambda_cta=LAMBDA_CTA, lambda_seg=LAMBDA_SEG, dice_weight=DICE_WEIGHT)

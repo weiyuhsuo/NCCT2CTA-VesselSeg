@@ -108,8 +108,8 @@ def main():
         json.dump(test_ids, f, indent=2)
 
     # Datasets
-    train_ds = PreprocessedDataset(train_ids, PREPROC_DIR, augment=True)
-    val_ds = PreprocessedDataset(val_ids, PREPROC_DIR, augment=False)
+    train_ds = PreprocessedDataset(train_ids, PREPROC_DIR / "train", augment=True, target_size=IMAGE_SIZE)
+    val_ds = PreprocessedDataset(val_ids, PREPROC_DIR / "val", augment=False, target_size=IMAGE_SIZE)
 
     print(f"Train slices: {len(train_ds)}, Val slices: {len(val_ds)}")
     print("Creating DataLoader...", flush=True)
